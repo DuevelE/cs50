@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Answer
+{% endblock %}
+
+{% block main %}
+<script src="/static/card.js"></script>
+<link href="/static/card.css" rel="stylesheet">
+<link href="/static/lock.css" rel="stylesheet">
+<link href="/static/table.css" rel="stylesheet">
+<button onclick="submit()" id="aBUT">Finalize</button>
+<div class="box">
+<div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
+  <div class="stackedcards-container">
+    {% for i in range(num_q) %}
+      <div class="card-item"> 
+      <image class="Cimage" src="{{ questions[var[i]]["image_url"] }}"></image>
+        <div class="Qtext">
+          <p>{{ questions[var[i]]["question"] }}</p>
+        </div>
+      
+      </div>
+    {% endfor %}
+  </div>
+  <div class="stackedcards--animatable stackedcards-overlay top">Skip</div>
+  <div class="stackedcards--animatable stackedcards-overlay right">True</div>
+  <div class="stackedcards--animatable stackedcards-overlay left">False</div>
+</div>
+<div class="global-actions">
+  <div class="left-action">False</div>
+  <div class="top-action">Skip(3)</div>
+  <div class="right-action">True</div>
+</div>  
+</div>
+
+<div class="parent-div" style="visibility: hidden;">
+<form action="/" method="post" id="answers">
+<div id="form-group">
+  <p>
+    <textarea id="answer" name="answer" rows="4" cols="50"></textarea>
+  </p>
+  {% for i in range(num_q) %}
+      <p id="text_q{{ i + 1 }}"> {{ questions[var[i]]["question_id"] }} </p>
+  {% endfor %}
+</div>
+</form>
+</div>
+
+
+
+{% endblock %}
+    

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Answer
+{% endblock %}
+
+{% block main %}
+<link href="/static/table.css" rel="stylesheet">
+
+<div class="box2">
+<h1>{{ right }} / {{ length }} Accuracy: {{ right / length }}</h1>
+<table id="myTable">
+    {% for i in range(length) %}
+        <tr>
+            <th>#{{ i + 1 }}</th>
+            <th>{{ questions[var[i]]["question"] }}</th>
+            <th>{{ answers[i] }}</th>
+            {% if boolea[i] == 1: %}
+                <th><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Checkmark.svg/1200px-Checkmark.svg.png" style="width: 25px;"></th>
+            {% elif boolea[i] == 0: %}
+                <th><img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Red_x.svg/1200px-Red_x.svg.png" style="width: 20px;"></th>
+            {% else: %}
+                <th><img src="https://news-cdn.softpedia.com/images/fitted/340x180/Mac-OS-X-Gray-Startup-Screen-Progress-Bar-Explained.jpg" style="width: 20px; height: 5px;"></th>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+
+</div>
+
+
+
+
+{% endblock %}
+    
